@@ -5,7 +5,7 @@ function App() {
 
     return (
         <div>
-            <h1 align={"center"}>TESTING</h1>
+            <h1 align={"center"}>Prototype</h1>
 
             <div className={'container'}>
                 <WaitTimes id={'magickingdompark'} name={'Magic Kingdom'}/>
