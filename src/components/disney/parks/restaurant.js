@@ -1,5 +1,5 @@
-const Entity = require('./entity');
-const Queue = require("./queue");
+import Entity from './entity';
+import Queue from "./queue";
 
 class Restaurant extends Entity {
     constructor(options = {}) {
@@ -8,4 +8,4 @@ class Restaurant extends Entity {
     }
 }
 
-module.exports = Restaurant;
+export default Restaurant;

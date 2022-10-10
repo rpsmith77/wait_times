@@ -1,4 +1,4 @@
-const Entity = require('./entity');
+import Entity from './entity';
 
 class Show extends Entity {
     constructor(options = {}) {
@@ -7,4 +7,4 @@ class Show extends Entity {
     }
 }
 
-module.exports = Show;
+export default Show;

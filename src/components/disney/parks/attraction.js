@@ -1,5 +1,5 @@
-const Entity = require('./entity');
-const Queue = require('./queue');
+import Entity from './entity'
+import Queue from './queue';
 
 class Attraction extends Entity {
     constructor(options = {}) {
@@ -9,4 +9,4 @@ class Attraction extends Entity {
     }
 }
 
-module.exports = Attraction;
+export default Attraction;

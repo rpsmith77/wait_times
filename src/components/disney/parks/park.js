@@ -1,6 +1,6 @@
-const Attraction = require('./attraction');
-const Show = require('./show');
-const Restaurant = require('./restaurant');
+import Attraction from './attraction';
+import Show from './show';
+import Restaurant from './restaurant';
 
 class Park {
     constructor(options = {}) {
@@ -46,4 +46,4 @@ class Park {
 
 }
 
-module.exports = Park;
+export default Park;
