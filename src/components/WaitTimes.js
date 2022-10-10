@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import './WaitTimes.css'
 
-const Park = require('./disney/parks/park');
+import Park from './disney/parks/park';
 
 function WaitTimes(props) {
 
