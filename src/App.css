@@ -1,13 +1,38 @@
+html {
+    background-color: #E2E7E8;
+}
+
 body {
     padding-left: 35px;
     padding-right: 35px;
 }
 
 .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.park-selector li {
+    text-align: left;
+    display: block;
+    border-radius: 10px;
+    padding: 5px;
+    width: 150%;
+}
+
+.park-table {
+    width: 30%;
+}
+
+table {
+    background-color: #FCFAFA;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
 }
 
-.posts-container {
 
-}
 

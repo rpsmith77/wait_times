@@ -6,14 +6,17 @@ import Park from './disney/parks/park';
 function WaitTimes(props) {
 
     const [park, setPark] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        setIsLoading(true);
         fetch(`https://api.themeparks.wiki/v1/entity/${props.id}/live`)
             .then((response) => response.json())
             .then((body) => {
                 setPark(new Park(body));
+                setIsLoading(false);
             });
-    }, []);
+    }, [props.id]);
 
     function displayWaitInfo(attraction) {
         let waitInfo = null;
@@ -39,14 +42,18 @@ function WaitTimes(props) {
         return (
             <tr key={attraction.id}>
                 <td>{attraction.name}</td>
-                <td>{displayWaitInfo(attraction)}</td>
+                <td width={'5%'}>{displayWaitInfo(attraction)}</td>
             </tr>
         );
     }
 
+    if (isLoading) {
+        return <div className="park-table">
+            <h1 style={{"textAlign":"center"}}>Loading...</h1>
+        </div>
+    }
     return (
-        <div className="posts-container">
-            <h1 align={"center"}>{props.name}</h1>
+        <div className="park-table">
             <table>
                 <tbody>
                 {park._attractions?.sort((a, b) => a.name > b.name ? 1 : -1).map((attraction) => {
