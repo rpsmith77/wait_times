@@ -22,6 +22,9 @@ body {
     padding: 5px;
     width: 150%;
 }
+.park-selector li span {
+    cursor: pointer;
+}
 
 .park-table {
     width: 30%;
