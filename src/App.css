@@ -54,7 +54,7 @@ table {
     }
 
     .park-selector ul {
-        width: 100%;
+        width: 80%;
         display: inline-flex;
         justify-content: center;
         flex-grow: 1;
