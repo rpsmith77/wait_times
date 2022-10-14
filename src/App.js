@@ -35,16 +35,20 @@ function App() {
                 <div className={'park-selector'}>
                     <ul>
                         <li style={{backgroundColor: park.id === mk.id ? selectedColor : null}}>
-                            <span onClick={magickKingdom}>Magic Kingdom</span>
+                            <span className={'full-text'} onClick={magickKingdom}>Magic Kingdom</span>
+                            <span className={'short-text'} onClick={magickKingdom}>MK</span>
                         </li>
                         <li style={{backgroundColor: park.id === ep.id ? selectedColor : null}}>
-                            <span onClick={epcot}>EPCOT</span>
+                            <span className={'full-text'} onClick={epcot}>EPCOT</span>
+                            <span className={'short-text'} onClick={epcot}>EP</span>
                         </li>
                         <li style={{backgroundColor: park.id === hs.id ? selectedColor : null}}>
-                            <span onClick={hollywoodStudios}>Hollywood Studios</span>
+                            <span className={'full-text'} onClick={hollywoodStudios}>Hollywood Studios</span>
+                            <span className={'short-text'} onClick={hollywoodStudios}>HS</span>
                         </li>
                         <li style={{backgroundColor: park.id === ak.id ? selectedColor : null}}>
-                            <span onClick={animalKingdom}>Animal Kingdom</span>
+                            <span className={'full-text'} onClick={animalKingdom}>Animal Kingdom</span>
+                            <span className={'short-text'} onClick={animalKingdom}>AK</span>
                         </li>
                     </ul>
                 </div>

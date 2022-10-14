@@ -14,7 +14,6 @@ body {
     justify-content: center;
 }
 
-
 .park-selector li {
     text-align: left;
     display: block;
@@ -22,6 +21,7 @@ body {
     padding: 5px;
     width: 150%;
 }
+
 .park-selector li span {
     cursor: pointer;
 }
@@ -34,7 +34,56 @@ table {
     background-color: #FCFAFA;
     width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
 
+.short-text {
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .park-selector {
+        width: 80%;
+    }
+
+    .park-selector ul {
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        flex-grow: 1;
+    }
+
+    .park-selector li {
+        width: 100%;
+        text-align: center;
+        border-radius: 10px;
+        padding: 5px;
+        min-width: 0;
+    }
+
+    .park-selector li span {
+        cursor: pointer;
+    }
+
+    .park-table {
+        width: 80%;
+    }
+
+    table {
+        background-color: #FCFAFA;
+        width: 100%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .short-text { display: inline-block; }
+    .full-text { display: none; }
 }
 
 
