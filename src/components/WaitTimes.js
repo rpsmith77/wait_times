@@ -40,9 +40,9 @@ function WaitTimes(props) {
 
     function displayAttraction(attraction) {
         return (
-            <tr key={attraction.id}>
+            <tr className={'sep-line'} key={attraction.id}>
                 <td>{attraction.name}</td>
-                <td width={'5%'}>{displayWaitInfo(attraction)}</td>
+                <td style={{textAlign: 'center'}} width={'5%'}>{displayWaitInfo(attraction)}</td>
             </tr>
         );
     }
