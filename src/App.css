@@ -15,11 +15,7 @@ body {
     justify-content: center;
 }
 
-.park-selector {
-    width: 80%;
-}
-
-.park-table {
+.park-selector, .park-table {
     width: 80%;
 }
 
@@ -28,6 +24,10 @@ body {
 }
 
 @media screen and (max-width: 1000px) {
+    .park-selector, .park-table {
+        width: 100%;
+    }
+
     .short-text {
         display: inline-block;
     }
