@@ -1,12 +1,7 @@
 import {useEffect, useState} from "react";
 import './WaitTimes.css'
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import {Table, TableBody, TableCell, TableContainer, TableRow, Paper, Chip, CircularProgress, Box} from '@mui/material';
 
 import Park from './disney/parks/park';
 
@@ -26,45 +21,37 @@ function WaitTimes(props) {
     }, [props.id]);
 
     function displayWaitInfo(attraction) {
-        let waitInfo = null;
+        let waitInfo = attraction.status;
         if (!(attraction.status === 'OPERATING')) {
-            waitInfo = attraction.status;
+            return waitInfo;
         } else if (attraction.queue.STANDBY) {
             if (attraction.queue.STANDBY.waitTime != null) {
                 waitInfo = attraction.queue.STANDBY.waitTime;
-            } else {
-                waitInfo = '-';
             }
         } else if (attraction.queue.BOARDING_GROUP) {
             waitInfo = attraction.queue.BOARDING_GROUP.currentGroupStart + '-' + attraction.queue.BOARDING_GROUP.currentGroupEnd;
-        }
-        if (waitInfo === null) {
-            waitInfo = '-';
         }
         return waitInfo;
     }
 
 
     function displayAttraction(attraction) {
-        // return (
-        //     <tr key={attraction.id}>
-        //         <td>{attraction.name}</td>
-        //         <td style={{textAlign: 'center'}} width={'5%'}>{displayWaitInfo(attraction)}</td>
-        //     </tr>
-        // );
         return (
             <TableRow key={attraction.id} sx={{'&:last-child td, &:last-child th': {border: 0}}}>
                 <TableCell align={'left'}>{attraction.name}</TableCell>
-                <TableCell align={'center'}>{displayWaitInfo(attraction)}</TableCell>
+                <TableCell align={'center'}><Chip label={displayWaitInfo(attraction)}/></TableCell>
             </TableRow>
         );
     }
 
     if (isLoading) {
-        return <div className="park-table">
-            <h1 style={{"textAlign": "center"}}>Loading...</h1>
-        </div>
+        return (
+            <Box sx={{display: 'flex', alignItems: 'center'}}>
+                <CircularProgress sx={{marginTop: '25px'}}/>
+            </Box>
+        );
     }
+
     return (
         <div className="park-table">
             <TableContainer component={Paper}>

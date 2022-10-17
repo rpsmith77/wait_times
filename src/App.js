@@ -5,7 +5,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import WaitTimes from "./components/WaitTimes";
 import {useState} from "react";
-import {ToggleButton, ToggleButtonGroup, useMediaQuery} from "@mui/material";
+import {ToggleButton, ToggleButtonGroup} from "@mui/material";
 
 function App() {
 
@@ -15,7 +15,7 @@ function App() {
     const ak = {id: 'disneysanimalkingdomthemepark', name: 'Disney\'s Animal Kingdom Theme Park', shortName: 'AK'};
 
     const [park, setPark] = useState({id: 'magickingdompark', name: 'Magic Kingdom'});
-    const matches = useMediaQuery("(min-width:1000px)");
+    // const matches = useMediaQuery("(min-width:1000px)");
 
     const handlePark = (event, newPark) => {
         setPark(newPark);
@@ -50,7 +50,7 @@ function App() {
                         value={park}
                         exclusive
                         onChange={handlePark}
-                        orientation={matches ? 'vertical' : 'horizontal'}
+                        orientation={'horizontal'}
                         fullWidth={true}
                         variant="text"
                     >
