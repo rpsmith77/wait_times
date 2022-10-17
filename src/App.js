@@ -1,31 +1,44 @@
 import './App.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 import WaitTimes from "./components/WaitTimes";
 import {useState} from "react";
+import {ToggleButton, ToggleButtonGroup, useMediaQuery} from "@mui/material";
 
 function App() {
-    const mk = {id: 'magickingdompark', name: 'Magic Kingdom'};
-    const ep = {id: 'epcot', name: 'EPCOT'};
-    const hs = {id: 'disneyshollywoodstudios', name: 'Disney\'s Hollywood Studios'};
-    const ak = {id: 'disneysanimalkingdomthemepark', name: 'Disney\'s Animal Kingdom Theme Park'};
-    const selectedColor = '#A4B8C4';
+
+    const mk = {id: 'magickingdompark', name: 'Magic Kingdom', shortName: 'MK'};
+    const ep = {id: 'epcot', name: 'EPCOT', shortName: 'EP'};
+    const hs = {id: 'disneyshollywoodstudios', name: 'Disney\'s Hollywood Studios', shortName: 'HS'};
+    const ak = {id: 'disneysanimalkingdomthemepark', name: 'Disney\'s Animal Kingdom Theme Park', shortName: 'AK'};
 
     const [park, setPark] = useState({id: 'magickingdompark', name: 'Magic Kingdom'});
+    const matches = useMediaQuery("(min-width:1000px)");
 
-    const magickKingdom = () => {
-        setPark(mk);
-    };
+    const handlePark = (event, newPark) => {
+        setPark(newPark);
+    }
 
-    const epcot = () => {
-        setPark(ep);
-    };
-
-    const hollywoodStudios = () => {
-        setPark(hs);
-    };
-
-    const animalKingdom = () => {
-        setPark(ak);
-    };
+    const buttons = [
+        <ToggleButton key={mk.id} value={mk}>
+            <span className={'full-text'}>{mk.name}</span>
+            <span className={'short-text'}>{mk.shortName}</span>
+        </ToggleButton>,
+        <ToggleButton key={ep.id} value={ep}>
+            <span className={'full-text'}>{ep.name}</span>
+            <span className={'short-text'}>{ep.shortName}</span>
+        </ToggleButton>,
+        <ToggleButton key={hs.id} value={hs}>
+            <span className={'full-text'}>{hs.name}</span>
+            <span className={'short-text'}>{hs.shortName}</span>
+        </ToggleButton>,
+        <ToggleButton key={ak.id} value={ak}>
+            <span className={'full-text'}>{ak.name}</span>
+            <span className={'short-text'}>{ak.shortName}</span>
+        </ToggleButton>
+    ];
 
     return (
         <div>
@@ -33,24 +46,16 @@ function App() {
 
             <div className={'container'}>
                 <div className={'park-selector'}>
-                    <ul>
-                        <li style={{backgroundColor: park.id === mk.id ? selectedColor : null}}>
-                            <span className={'full-text'} onClick={magickKingdom}>Magic Kingdom</span>
-                            <span className={'short-text'} onClick={magickKingdom}>MK</span>
-                        </li>
-                        <li style={{backgroundColor: park.id === ep.id ? selectedColor : null}}>
-                            <span className={'full-text'} onClick={epcot}>EPCOT</span>
-                            <span className={'short-text'} onClick={epcot}>EP</span>
-                        </li>
-                        <li style={{backgroundColor: park.id === hs.id ? selectedColor : null}}>
-                            <span className={'full-text'} onClick={hollywoodStudios}>Hollywood Studios</span>
-                            <span className={'short-text'} onClick={hollywoodStudios}>HS</span>
-                        </li>
-                        <li style={{backgroundColor: park.id === ak.id ? selectedColor : null}}>
-                            <span className={'full-text'} onClick={animalKingdom}>Animal Kingdom</span>
-                            <span className={'short-text'} onClick={animalKingdom}>AK</span>
-                        </li>
-                    </ul>
+                    <ToggleButtonGroup
+                        value={park}
+                        exclusive
+                        onChange={handlePark}
+                        orientation={matches ? 'vertical' : 'horizontal'}
+                        fullWidth={true}
+                        variant="text"
+                    >
+                        {buttons}
+                    </ToggleButtonGroup>
                 </div>
                 <WaitTimes id={park.id} name={park.name}/>
             </div>

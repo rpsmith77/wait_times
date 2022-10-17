@@ -30,20 +30,16 @@ body {
     width: 30%;
 }
 
-table {
-    border-collapse: collapse;
+.park-table table {
     background-color: #FCFAFA;
     width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-td {
-    padding: 10px 5px; /* 10px top & bottom padding, 0px left & right */
+.park-table td {
+    padding: 10px 5px;
 }
 
-.separating_line {
-    border-top: 1px #000 solid; /* top border only */
-}
 
 .short-text {
     display: none;
@@ -66,7 +62,6 @@ td {
         width: 80%;
         display: inline-flex;
         justify-content: center;
-        flex-grow: 1;
     }
 
     .park-selector li {
@@ -94,10 +89,6 @@ td {
 
     td {
         padding: 10px 5px; /* 10px top & bottom padding, 0px left & right */
-    }
-
-    .separating_line {
-        border-top: 1px #000 solid; /* top border only */
     }
 
     .short-text {
