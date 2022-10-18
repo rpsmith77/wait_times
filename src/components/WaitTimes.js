@@ -39,8 +39,9 @@ function WaitTimes(props) {
             alignItems: 'center',
             flexWrap: 'wrap',
             justifyContent: "center",
+            verticalAlign: "middle",
         }}>
-            {icon}
+            <span className={'full-text'}>{icon}</span>
             <span>{text}</span>
         </div>}/>
     }
