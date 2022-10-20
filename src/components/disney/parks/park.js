@@ -2,7 +2,7 @@ import Attraction from './attraction';
 import Show from './show';
 import Restaurant from './restaurant';
 
-class Park {
+export default class Park {
     constructor(options = {}) {
         this.id = options.id || null;
         this.name = options.name || null;
@@ -46,4 +46,3 @@ class Park {
 
 }
 
-export default Park;

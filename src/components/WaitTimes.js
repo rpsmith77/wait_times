@@ -34,26 +34,25 @@ function WaitTimes(props) {
     }, [props.id]);
 
     function displayIconInChip(icon, text, color = 'default') {
-        return <Chip color={color} label={<div style={{
-            display: 'flex',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            justifyContent: "center",
-            verticalAlign: "middle",
-        }}>
-            <span className={'full-text'}>{icon}</span>
-            <span>{text}</span>
-        </div>}/>
+        return <Chip color={color} label={
+            <div style={{
+                display: 'flex',
+                alignItems: 'center',
+            }}>
+                <span className={'full-text'}>{icon}</span>
+                <span>{text}</span>
+            </div>
+        }/>
     }
 
     function displayWaitInfo(attraction) {
         let waitInfo = attraction.status;
         if (!(attraction.status === 'OPERATING')) {
             if (waitInfo === 'CLOSED') {
-                return displayIconInChip(<CloseIcon/>, 'Closed');
+                return displayIconInChip(<CloseIcon/>, 'Closed', 'error');
             }
             if (waitInfo === 'DOWN') {
-                return displayIconInChip(<ArrowDownwardIcon/>, 'Down', 'error');
+                return displayIconInChip(<ArrowDownwardIcon/>, 'Down', 'warning');
             }
         } else if (attraction.queue.STANDBY) {
             if (attraction.queue.STANDBY.waitTime != null) {
@@ -63,7 +62,7 @@ function WaitTimes(props) {
             if (attraction.queue.BOARDING_GROUP.currentGroupStart || attraction.queue.BOARDING_GROUP.currentGroupEnd) {
                 waitInfo = attraction.queue.BOARDING_GROUP.currentGroupStart + '-' + attraction.queue.BOARDING_GROUP.currentGroupEnd;
             } else {
-                return displayIconInChip(<CloseIcon/>, 'Closed');
+                return displayIconInChip(<CloseIcon/>, 'Closed', 'error');
             }
         }
         if (waitInfo === 'OPERATING') {

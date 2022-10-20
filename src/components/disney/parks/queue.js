@@ -1,4 +1,4 @@
-class Queue {
+export default class Queue {
     constructor(options = {}) {
         if (options['queue']) {
             this.STANDBY = options.STANDBY || null;
@@ -27,5 +27,3 @@ class Queue {
         return this.PAID_RETURN_TIME;
     }
 }
-
-export default Queue;

@@ -1,4 +1,4 @@
-class Entity {
+export default class Entity{
     constructor(options = {}) {
         this.id = options.id || null;
         this.name = options.name || null;
@@ -8,5 +8,3 @@ class Entity {
         this.lastUpdated = options.lastUpdated || null;
     }
 }
-
-export default Entity;
