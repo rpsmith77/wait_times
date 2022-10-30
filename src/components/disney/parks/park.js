@@ -14,12 +14,12 @@ export default class Park {
     }
 
     setAttractions(options) {
-        return (options['liveData'].map((data) => {
+        return options['liveData'] ? (options['liveData']?.map((data) => {
             if (data['entityType'] === "ATTRACTION") {
                 return new Attraction(data);
             }
             return null;
-        })).filter(item => !!item);
+        })).filter(item => !!item) : null;
     }
 
     get _attractions() {
@@ -27,21 +27,21 @@ export default class Park {
     }
 
     setShows(options) {
-        return (options['liveData'].map((data) => {
+        return options['liveData'] ? (options['liveData']?.map((data) => {
             if (data['entityType'] === "SHOW") {
                 return new Show(data);
             }
             return null;
-        })).filter(item => !!item);
+        })).filter(item => !!item) : null;
     }
 
     setRestaurants(options) {
-        return (options['liveData'].map((data) => {
+        return options['liveData'] ? (options['liveData']?.map((data) => {
             if (data['entityType'] === "RESTAURANT") {
                 return new Restaurant(data);
             }
             return null;
-        })).filter(item => !!item);
+        })).filter(item => !!item) : null;
     }
 
 }

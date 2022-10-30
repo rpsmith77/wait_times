@@ -1,27 +1,25 @@
 import './App.css';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-import WaitTimes from "./components/WaitTimes";
-import {useState} from "react";
-import {ToggleButton, ToggleButtonGroup} from "@mui/material";
+
+import {useState, useEffect} from "react";
+import {ToggleButton, ToggleButtonGroup, CircularProgress, Box} from "@mui/material";
+
+import Park from "./components/disney/parks/park";
+import ParkTable from "./components/ParkTable";
 
 function App() {
-
-    const mk = {id: 'magickingdompark', name: 'Magic Kingdom', shortName: 'MK'};
+    const mk = {id: 'magickingdompark', name: 'Magic Kingdom Park', shortName: 'MK'};
     const ep = {id: 'epcot', name: 'EPCOT', shortName: 'EP'};
     const hs = {id: 'disneyshollywoodstudios', name: 'Disney\'s Hollywood Studios', shortName: 'HS'};
     const ak = {id: 'disneysanimalkingdomthemepark', name: 'Disney\'s Animal Kingdom Theme Park', shortName: 'AK'};
+    const [parkList] = useState([mk, ep, hs, ak]);
 
-    const [park, setPark] = useState({id: 'magickingdompark', name: 'Magic Kingdom'});
-    // const matches = useMediaQuery("(min-width:1000px)");
+    const [park, setPark] = useState(mk);
 
     const handlePark = (event, newPark) => {
         setPark(newPark);
     }
 
-    const buttons = [
+    const parkButtons = [
         <ToggleButton key={mk.id} value={mk}>
             <span className={'full-text'}>{mk.name}</span>
             <span className={'short-text'}>{mk.shortName}</span>
@@ -40,11 +38,55 @@ function App() {
         </ToggleButton>
     ];
 
+    const [entityType, setEntityType] = useState('attraction');
+
+    const handleEntityType = (event, newType) => {
+        setEntityType(newType);
+    }
+
+    const entityButtons = [
+        <ToggleButton key={'attractions'} value={'attraction'}>
+            Attractions
+        </ToggleButton>,
+        <ToggleButton key={'shows'} value={'show'}>
+            Shows
+        </ToggleButton>,
+        <ToggleButton key={'restaurants'} value={'restaurant'}>
+            Restaurants
+        </ToggleButton>
+    ];
+
+    let initialState: [];
+    initialState = [];
+
+    const [parks, setParks] = useState(initialState);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const [timeout, setTimeout] = useState(1000);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIsLoading(true);
+            Promise.all(parkList.map(park =>
+                fetch(`https://api.themeparks.wiki/v1/entity/${park.id}/live`)
+                    .then((response) => response.json()))
+            ).then(data => {
+                setParks(initialState);
+                data.forEach(park => setParks(prevState => [...prevState, new Park(park)]));
+                setIsLoading(false);
+                setTimeout(1000 * 60)
+            })
+
+        }, timeout);
+        return () => clearInterval(interval);
+    }, [initialState, parkList, timeout]);
+
+
     return (
         <div>
-            <h1 align={"center"}>Current {park.name} Wait Times</h1>
+            <h1 align={"center"}>{park.name} Information</h1>
 
-            <div className={'container'}>
+            <div className={'park-table'}>
                 <div className={'park-selector'}>
                     <ToggleButtonGroup
                         value={park}
@@ -54,14 +96,40 @@ function App() {
                         fullWidth={true}
                         variant="text"
                     >
-                        {buttons}
+                        {parkButtons}
                     </ToggleButtonGroup>
                 </div>
-                <WaitTimes id={park.id} name={park.name}/>
+                <div className={'park-selector'}>
+                    <ToggleButtonGroup
+                        value={entityType}
+                        exclusive
+                        onChange={handleEntityType}
+                        orientation={'horizontal'}
+                        fullWidth={true}
+                        variant="text"
+                    >
+                        {entityButtons}
+                    </ToggleButtonGroup>
+                </div>
+                {isLoading ?
+                    <Box display="flex"
+                         justifyContent="center"
+                         alignItems="center">
+                        <CircularProgress sx={{marginTop: '25px'}}/>
+                    </Box> : <div>
+                        <ParkTable
+                            entityType={entityType}
+                            park={(parks.find(obj => {
+                                return obj.name === park.name
+                            }))}/>
+                    </div>}
+
             </div>
 
         </div>
     )
+
+
 }
 
 export default App;

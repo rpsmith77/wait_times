@@ -1,38 +1,9 @@
-import {useEffect, useState} from "react";
-import './WaitTimes.css'
+import {Chip, Paper, Table, TableBody, TableCell, TableContainer, TableRow} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableRow,
-    Paper,
-    Chip,
-    CircularProgress,
-    Box,
-} from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import EventAvailableIcon from '@mui/icons-material/EventAvailable';
-
-import Park from './disney/parks/park';
-
-function WaitTimes(props) {
-
-    const [park, setPark] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        setIsLoading(true);
-        fetch(`https://api.themeparks.wiki/v1/entity/${props.id}/live`)
-            .then((response) => response.json())
-            .then((body) => {
-                setPark(new Park(body));
-                setIsLoading(false);
-            });
-    }, [props.id]);
-
+function AttractionTable(props){
     function displayIconInChip(icon, text, color = 'default') {
         return <Chip color={color} label={
             <div style={{
@@ -80,21 +51,12 @@ function WaitTimes(props) {
             </TableRow>
         );
     }
-
-    if (isLoading) {
-        return (
-            <Box sx={{display: 'flex', alignItems: 'center'}}>
-                <CircularProgress sx={{marginTop: '25px'}}/>
-            </Box>
-        );
-    }
-
     return (
         <div className="park-table">
             <TableContainer component={Paper}>
                 <Table>
                     <TableBody>
-                        {park._attractions?.sort((a, b) => a.name > b.name ? 1 : -1).map((attraction) => {
+                        {props.attractions.sort((a, b) => a.name > b.name ? 1 : -1).map((attraction) => {
                                 if (!(JSON.stringify(attraction.queue) === '{}')) {
                                     return (
                                         displayAttraction(attraction)
@@ -109,5 +71,4 @@ function WaitTimes(props) {
         </div>
     );
 }
-
-export default WaitTimes;
+export default AttractionTable;
