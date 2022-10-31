@@ -1,7 +1,15 @@
 import './App.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 
 import {useState, useEffect} from "react";
 import {ToggleButton, ToggleButtonGroup, CircularProgress, Box} from "@mui/material";
+import AttractionsIcon from '@mui/icons-material/Attractions';
+import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
 
 import Park from "./components/disney/parks/park";
 import ParkTable from "./components/ParkTable";
@@ -13,26 +21,28 @@ function App() {
     const ak = {id: 'disneysanimalkingdomthemepark', name: 'Disney\'s Animal Kingdom Theme Park', shortName: 'AK'};
     const [parkList] = useState([mk, ep, hs, ak]);
 
-    const [park, setPark] = useState(mk);
+    const [park, setPark] = useState(mk.name);
 
-    const handlePark = (event, newPark) => {
-        setPark(newPark);
+    const handlePark = (event, park) => {
+        if(park !== null){
+            setPark(park);
+        }
     }
 
     const parkButtons = [
-        <ToggleButton key={mk.id} value={mk}>
+        <ToggleButton key={mk.id} value={mk.name}>
             <span className={'full-text'}>{mk.name}</span>
             <span className={'short-text'}>{mk.shortName}</span>
         </ToggleButton>,
-        <ToggleButton key={ep.id} value={ep}>
+        <ToggleButton key={ep.id} value={ep.name}>
             <span className={'full-text'}>{ep.name}</span>
             <span className={'short-text'}>{ep.shortName}</span>
         </ToggleButton>,
-        <ToggleButton key={hs.id} value={hs}>
+        <ToggleButton key={hs.id} value={hs.name}>
             <span className={'full-text'}>{hs.name}</span>
             <span className={'short-text'}>{hs.shortName}</span>
         </ToggleButton>,
-        <ToggleButton key={ak.id} value={ak}>
+        <ToggleButton key={ak.id} value={ak.name}>
             <span className={'full-text'}>{ak.name}</span>
             <span className={'short-text'}>{ak.shortName}</span>
         </ToggleButton>
@@ -41,18 +51,23 @@ function App() {
     const [entityType, setEntityType] = useState('attraction');
 
     const handleEntityType = (event, newType) => {
-        setEntityType(newType);
+        if (newType !== null){
+            setEntityType(newType);
+        }
     }
 
     const entityButtons = [
         <ToggleButton key={'attractions'} value={'attraction'}>
-            Attractions
+            <span className={'full-text'}><AttractionsIcon/> Attractions</span>
+            <span className={'short-text'}><AttractionsIcon/></span>
         </ToggleButton>,
         <ToggleButton key={'shows'} value={'show'}>
-            Shows
+            <span className={'full-text'}><TheaterComedyIcon/> Shows</span>
+            <span className={'short-text'}><TheaterComedyIcon/></span>
         </ToggleButton>,
         <ToggleButton key={'restaurants'} value={'restaurant'}>
-            Restaurants
+            <span className={'full-text'}><RestaurantIcon/> Restaurants</span>
+            <span className={'short-text'}><RestaurantIcon/></span>
         </ToggleButton>
     ];
 
@@ -84,7 +99,7 @@ function App() {
 
     return (
         <div>
-            <h1 align={"center"}>{park.name} Information</h1>
+            <h1 align={"center"}>Walt Disney World Current Information</h1>
 
             <div className={'park-table'}>
                 <div className={'park-selector'}>
@@ -119,8 +134,8 @@ function App() {
                     </Box> : <div>
                         <ParkTable
                             entityType={entityType}
-                            park={(parks.find(obj => {
-                                return obj.name === park.name
+                            park={(parks.find(p => {
+                                return p.name === park
                             }))}/>
                     </div>}
 
