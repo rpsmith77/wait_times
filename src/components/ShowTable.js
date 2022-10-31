@@ -18,10 +18,11 @@ function ShowTable(props){
 
     function findNextTime(showtimes) {
         const date = new Date();
+        date.setHours(date.getHours() - date.getTimezoneOffset()/60);
         let nextShowTime = showtimes.find(showtime =>
-            date.getHours() < Number(showtime['startTime'].slice(11, 13)) ||
-            (date.getHours() === Number(showtime['startTime'].slice(11, 13)) &&
-            date.getMinutes() <= Number(showtime['startTime'].slice(14, 16)))
+            date.getHours() < Number(showtime['startTime'].slice(11, 13)) - 4 ||  // - 4 for Timezone offset
+            (date.getHours() <= Number(showtime['endTime'].slice(11, 13)) - 4 &&
+            date.getMinutes() <= Number(showtime['endTime'].slice(14, 16)))
         );
         if (!nextShowTime) {
             return displayIconInChip(<CloseIcon/>, 'Concluded', 'warning');
