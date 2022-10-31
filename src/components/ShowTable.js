@@ -3,7 +3,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 
-function ShowTable(props){
+function ShowTable(props) {
     function displayIconInChip(icon, text, color = 'default') {
         return <Chip color={color} label={
             <div style={{
@@ -18,21 +18,21 @@ function ShowTable(props){
 
     function findNextTime(showtimes) {
         const date = new Date();
-        date.setHours(date.getHours() - date.getTimezoneOffset()/60);
+        date.setHours(date.getHours() - date.getTimezoneOffset() / 60);
         let nextShowTime = showtimes.find(showtime =>
             date.getHours() < Number(showtime['startTime'].slice(11, 13)) - 4 ||  // - 4 for Timezone offset
             (date.getHours() <= Number(showtime['endTime'].slice(11, 13)) - 4 &&
-            date.getMinutes() <= Number(showtime['endTime'].slice(14, 16)))
+                date.getMinutes() <= Number(showtime['endTime'].slice(14, 16)))
         );
         if (!nextShowTime) {
             return displayIconInChip(<CloseIcon/>, 'Concluded', 'warning');
         }
-        if (nextShowTime.startTime !== nextShowTime.endTime){
+        if (nextShowTime.startTime !== nextShowTime.endTime) {
             return <Chip color={'primary'} label={
-                nextShowTime.startTime.slice(11,16) + "-" + nextShowTime.endTime.slice(11,16)
+                nextShowTime.startTime.slice(11, 16) + "-" + nextShowTime.endTime.slice(11, 16)
             }/>
         }
-        return <Chip color={'primary'} label={nextShowTime.startTime.slice(11,16)}/>
+        return <Chip color={'primary'} label={nextShowTime.startTime.slice(11, 16)}/>
 
     }
 
@@ -63,25 +63,30 @@ function ShowTable(props){
             </TableRow>
         );
     }
+
     return (
         <div className="park-table">
             <TableContainer component={Paper}>
                 <Table>
 
                     <TableBody>
-                        {props.shows.sort((a, b) => a.name > b.name ? 1 : -1).map((show) => {
-                                if (!(JSON.stringify(show.queue) === '{}')) {
-                                    return (
-                                        displayShow(show)
-                                    );
+                        {props.shows
+                            .sort((a, b) => a.name > b.name ? 1 : -1)
+                            .sort((a, b) => a.status > b.status ? -1 : 1)
+                            .map((show) => {
+                                    if (!(JSON.stringify(show.queue) === '{}')) {
+                                        return (
+                                            displayShow(show)
+                                        );
+                                    }
+                                    return null;
                                 }
-                                return null;
-                            }
-                        )}
+                            )}
                     </TableBody>
                 </Table>
             </TableContainer>
         </div>
     );
 }
+
 export default ShowTable;

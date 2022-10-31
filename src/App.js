@@ -24,7 +24,7 @@ function App() {
     const [park, setPark] = useState(mk.name);
 
     const handlePark = (event, park) => {
-        if(park !== null){
+        if (park !== null) {
             setPark(park);
         }
     }
@@ -51,7 +51,7 @@ function App() {
     const [entityType, setEntityType] = useState('attraction');
 
     const handleEntityType = (event, newType) => {
-        if (newType !== null){
+        if (newType !== null) {
             setEntityType(newType);
         }
     }
@@ -89,7 +89,7 @@ function App() {
                 setParks(initialState);
                 data.forEach(park => setParks(prevState => [...prevState, new Park(park)]));
                 setIsLoading(false);
-                setTimeout(1000 * 60)
+                setTimeout(1000 * 60 * 5)
             })
 
         }, timeout);

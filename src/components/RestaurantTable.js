@@ -3,7 +3,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import EventBusyIcon from '@mui/icons-material/EventBusy';
 
-function RestaurantTable(props){
+function RestaurantTable(props) {
     function displayIconInChip(icon, text, color = 'default') {
         return <Chip color={color} label={
             <div style={{
@@ -45,6 +45,7 @@ function RestaurantTable(props){
             </TableRow>
         );
     }
+
     return (
         <div className="park-table">
             <TableContainer component={Paper}>
@@ -66,4 +67,5 @@ function RestaurantTable(props){
         </div>
     );
 }
+
 export default RestaurantTable;
