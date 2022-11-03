@@ -24,7 +24,7 @@ function App() {
     const [park, setPark] = useState(mk.name);
 
     const handlePark = (event, park) => {
-        if (park !== null) {
+        if(park !== null){
             setPark(park);
         }
     }
@@ -51,7 +51,7 @@ function App() {
     const [entityType, setEntityType] = useState('attraction');
 
     const handleEntityType = (event, newType) => {
-        if (newType !== null) {
+        if (newType !== null){
             setEntityType(newType);
         }
     }

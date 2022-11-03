@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# [WDW Live Info](https://rpsmith.me/wait_times/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT SHIELDS -->
+[![Contributors][contributors-shield]][contributors-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+The Purpose of this website is to quickly, and easily access live information from the main 4 WDW theme parks. It shows
+things like the attractions status/wait time, next show time, and restaurant walk up availability. Currently, the only
+official way to view this data is through the "My Disney Experience" app.
 
-### `npm start`
+## Demonstration
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Demo Gif](./Demo.gif)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Built With
 
-### `npm test`
+- [React](https://reactjs.org/)
+- [JavaScript](https://www.javascript.com/)
+- [Node.js](https://nodejs.org/en/)
+- [Themepark.wiki API](https://api.themeparks.wiki/docs/v1/)
+- [MUI](https://mui.com/)
+- [GitHub Pages](https://pages.github.com/)
+- [WebStorm](https://www.jetbrains.com/webstorm/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Contributing
 
-### `npm run build`
+If you want to contribute to this project, just hit me up on [LinkedIn](https://www.linkedin.com/in/ryan--smith/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Author
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Ryan Smith: [LinkedIn](https://www.linkedin.com/in/ryan--smith/) | [Portfolio](https://rpsmith.me/)
+| [GitHub](https://github.com/rpsmith77)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## License
 
-### `npm run eject`
+[MIT License](./License.md)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Acknowledgments
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Stack Overflow
+- [freeCodeCamp](https://www.freecodecamp.org/news)
+- [themeparks.wiki](https://themeparks.wiki/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## History
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Version 0.1.0:
+    - Able to view the current status and wait times for attractions at all 4 major theme parks at WDW
+- Version 0.1.1:
+    - Able to swap view between Attractions, Shows, and Restaurants
+    - API auto updates every 5 minutes
 
-## Learn More
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[contributors-shield]: https://img.shields.io/github/contributors/rpsmith77/wait_times.svg?style=for-the-badge
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[contributors-url]: https://github.com/rpsmith77/wait_times/graphs/contributors
 
-### Code Splitting
+[stars-shield]: https://img.shields.io/github/stars/rpsmith77/wait_times.svg?style=for-the-badge
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[stars-url]: https://github.com/rpsmith77/wait_times/stargazers
 
-### Analyzing the Bundle Size
+[issues-shield]: https://img.shields.io/github/issues/rpsmith77/wait_times.svg?style=for-the-badge
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[issues-url]: https://github.com/rpsmith77/wait_times/issues
