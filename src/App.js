@@ -1,3 +1,7 @@
+/**
+ * It fetches the data from the API, and then renders the data in a table
+ * @returns The return statement is returning the JSX that is being rendered.
+ */
 import './App.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -24,7 +28,7 @@ function App() {
     const [park, setPark] = useState(mk.name);
 
     const handlePark = (event, park) => {
-        if(park !== null){
+        if (park !== null) {
             setPark(park);
         }
     }
@@ -51,7 +55,7 @@ function App() {
     const [entityType, setEntityType] = useState('attraction');
 
     const handleEntityType = (event, newType) => {
-        if (newType !== null){
+        if (newType !== null) {
             setEntityType(newType);
         }
     }
@@ -79,6 +83,7 @@ function App() {
 
     const [timeout, setTimeout] = useState(1000);
 
+    /* A hook that is called after every render. It is used to fetch the data from the API. */
     useEffect(() => {
         const interval = setInterval(() => {
             setIsLoading(true);
@@ -137,7 +142,8 @@ function App() {
                             park={(parks.find(p => {
                                 return p.name === park
                             }))}/>
-                    </div>}
+                    </div>
+                }
 
             </div>
 

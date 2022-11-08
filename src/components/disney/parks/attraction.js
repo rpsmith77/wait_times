@@ -1,3 +1,4 @@
+/* Attraction is an Entity that has a queue and a forecast. */
 import Entity from './entity'
 import Queue from './queue';
 

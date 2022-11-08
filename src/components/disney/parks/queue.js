@@ -1,3 +1,4 @@
+/* This class is a representation of the queue object returned from the API */
 export default class Queue {
     constructor(options = {}) {
         if (options['queue']) {
@@ -11,6 +12,7 @@ export default class Queue {
 
     }
 
+    /* Getters */
     get _STANDBY() {
         return this.STANDBY;
     }

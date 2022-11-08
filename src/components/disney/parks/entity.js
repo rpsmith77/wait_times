@@ -1,3 +1,4 @@
+/* This class is used to create an object that represents a single entity in the park */
 export default class Entity {
     constructor(options = {}) {
         this.id = options.id || null;

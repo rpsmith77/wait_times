@@ -1,9 +1,22 @@
+/**
+ * It takes in an array of attractions, sorts them alphabetically, and then displays them in a table
+ * @param props - The props that are passed to the component.
+ * @returns A table of attractions with their wait times.
+ */
 import {Chip, Paper, Table, TableBody, TableCell, TableContainer, TableRow} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 
 function AttractionTable(props){
+    /**
+     * It takes an icon, text, and color, and returns a Chip component with the icon and text inside
+     * @param icon - The icon you want to display.
+     * @param text - The text to display in the chip
+     * @param [color=default] - The color of the chip.
+     * @returns A Chip component with a label that contains a div with a display of flex, alignItems of
+     * center, and a span with a class of full-text and a span.
+     */
     function displayIconInChip(icon, text, color = 'default') {
         return <Chip color={color} label={
             <div style={{
@@ -16,6 +29,14 @@ function AttractionTable(props){
         }/>
     }
 
+    /**
+     * If the attraction is closed, display a red "Closed" chip. If the attraction is down, display a
+     * yellow "Down" chip. If the attraction is open, display a green "Open" chip. If the attraction is
+     * open and has a standby wait time, display the wait time. If the attraction is open and has a
+     * boarding group, display the boarding group range
+     * @param attraction - The attraction object
+     * @returns A Chip component with a label of the wait time.
+     */
     function displayWaitInfo(attraction) {
         let waitInfo = attraction.status;
         if (!(attraction.status === 'OPERATING')) {
@@ -43,6 +64,12 @@ function AttractionTable(props){
     }
 
 
+    /**
+     * It takes an attraction object as an argument, and returns a table row with the attraction name
+     * and wait time
+     * @param attraction - The attraction object that is being displayed.
+     * @returns A table row with the attraction name and wait time.
+     */
     function displayAttraction(attraction) {
         return (
             <TableRow key={attraction.id} sx={{'&:last-child td, &:last-child th': {border: 0}}}>

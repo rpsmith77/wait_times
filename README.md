@@ -8,7 +8,7 @@
 ## Description
 
 The Purpose of this website is to quickly, and easily access live information from the main 4 WDW theme parks. It shows
-things like the attractions status/wait time, next show time, and restaurant walk up availability. Currently, the only
+things like the attractions' status/wait time, next show time, and restaurant walk up availability. Currently, the only
 official way to view this data is through the "My Disney Experience" app.
 
 ## Demonstration

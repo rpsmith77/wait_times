@@ -1,9 +1,23 @@
+/**
+ * It takes in a list of shows, sorts them by name, then sorts them by status, then maps over them and
+ * displays them in a table
+ * @param props - The props that are passed to the component.
+ * @returns A table of shows with their name and status.
+ */
 import {Chip, Paper, Table, TableBody, TableCell, TableContainer, TableRow} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 
 function ShowTable(props) {
+    /**
+     * It takes an icon, text, and color, and returns a Chip component with the icon and text inside
+     * @param icon - The icon you want to display.
+     * @param text - The text to display in the chip
+     * @param [color=default] - The color of the chip.
+     * @returns A Chip component with a label that contains a div with a display of flex, alignItems of
+     * center, and a span with a class of full-text and a span.
+     */
     function displayIconInChip(icon, text, color = 'default') {
         return <Chip color={color} label={
             <div style={{
@@ -16,6 +30,11 @@ function ShowTable(props) {
         }/>
     }
 
+    /**
+     * It takes in an array of showtimes and returns a chip with the next showtime
+     * @param showtimes - The showtimes of the movie
+     * @returns A React component.
+     */
     function findNextTime(showtimes) {
         const date = new Date();
         date.setHours(date.getHours() - date.getTimezoneOffset() / 60);
@@ -33,9 +52,14 @@ function ShowTable(props) {
             }/>
         }
         return <Chip color={'primary'} label={nextShowTime.startTime.slice(11, 16)}/>
-
     }
 
+    /**
+     * It takes in a show object, and returns a Chip component with a color and label based on the
+     * show's status
+     * @param show - The show object
+     * @returns A function that returns a Chip component.
+     */
     function displayInfo(show) {
         let waitInfo = show.status;
         if (!(show.status === 'OPERATING')) {
@@ -55,6 +79,12 @@ function ShowTable(props) {
     }
 
 
+    /**
+     * It returns a table row with two cells, the first cell containing the show's name, and the second
+     * cell containing the show's information
+     * @param show - The show object that is being displayed.
+     * @returns A table row with two table cells.
+     */
     function displayShow(show) {
         return (
             <TableRow key={show.id} sx={{'&:last-child td, &:last-child th': {border: 0}}}>

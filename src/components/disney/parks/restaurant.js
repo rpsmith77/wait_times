@@ -1,3 +1,4 @@
+/* Restaurant is an Entity that has a Queue */
 import Entity from './entity';
 import Queue from "./queue";
 
