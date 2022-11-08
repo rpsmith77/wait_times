@@ -103,15 +103,8 @@ function ShowTable(props) {
                         {props.shows
                             .sort((a, b) => a.name > b.name ? 1 : -1)
                             .sort((a, b) => a.status > b.status ? -1 : 1)
-                            .map((show) => {
-                                    if (!(JSON.stringify(show.queue) === '{}')) {
-                                        return (
-                                            displayShow(show)
-                                        );
-                                    }
-                                    return null;
-                                }
-                            )}
+                            .map((show) => displayShow(show))
+                        }
                     </TableBody>
                 </Table>
             </TableContainer>

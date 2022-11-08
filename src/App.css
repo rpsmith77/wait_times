@@ -3,9 +3,14 @@ html {
 }
 
 body {
-    padding-left: 35px;
-    padding-right: 35px;
-    padding-bottom: 35px;
+    padding: 0 35px 35px;
+}
+
+.content {
+    min-height: 95vh;
+}
+.title {
+    margin: 0;
 }
 
 .container {
@@ -16,17 +21,32 @@ body {
     justify-content: center;
 }
 
+
 .park-selector, .park-table {
     width: 90%;
     margin: auto;
+}
+
+.park-table {
+    padding-bottom: 10px;
 }
 
 .short-text {
     display: none;
 }
 
+.footer {
+    width: 90%;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
+
 @media screen and (max-width: 1000px) {
-    .park-selector, .park-table {
+    .park-selector, .park-table , .footer {
         width: 100%;
     }
 

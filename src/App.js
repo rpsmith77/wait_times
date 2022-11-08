@@ -17,6 +17,7 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 
 import Park from "./components/disney/parks/park";
 import ParkTable from "./components/ParkTable";
+import Footer from "./components/Footer";
 
 function App() {
     const mk = {id: 'magickingdompark', name: 'Magic Kingdom Park', shortName: 'MK'};
@@ -104,50 +105,54 @@ function App() {
 
     return (
         <div>
-            <h1 align={"center"}>Walt Disney World Current Information</h1>
+            <div className={"content"}>
+                <h1 className={'title'} align={"center"}>Walt Disney World Current Information</h1>
 
-            <div className={'park-table'}>
-                <div className={'park-selector'}>
-                    <ToggleButtonGroup
-                        value={park}
-                        exclusive
-                        onChange={handlePark}
-                        orientation={'horizontal'}
-                        fullWidth={true}
-                        variant="text"
-                    >
-                        {parkButtons}
-                    </ToggleButtonGroup>
-                </div>
-                <div className={'park-selector'}>
-                    <ToggleButtonGroup
-                        value={entityType}
-                        exclusive
-                        onChange={handleEntityType}
-                        orientation={'horizontal'}
-                        fullWidth={true}
-                        variant="text"
-                    >
-                        {entityButtons}
-                    </ToggleButtonGroup>
-                </div>
-                {isLoading ?
-                    <Box display="flex"
-                         justifyContent="center"
-                         alignItems="center">
-                        <CircularProgress sx={{marginTop: '25px'}}/>
-                    </Box> : <div>
-                        <ParkTable
-                            entityType={entityType}
-                            park={(parks.find(p => {
-                                return p.name === park
-                            }))}/>
+                <div className={'park-table'}>
+                    <div className={'park-selector'}>
+                        <ToggleButtonGroup
+                            value={park}
+                            exclusive
+                            onChange={handlePark}
+                            orientation={'horizontal'}
+                            fullWidth={true}
+                            variant="text"
+                        >
+                            {parkButtons}
+                        </ToggleButtonGroup>
                     </div>
-                }
+                    <div className={'park-selector'}>
+                        <ToggleButtonGroup
+                            value={entityType}
+                            exclusive
+                            onChange={handleEntityType}
+                            orientation={'horizontal'}
+                            fullWidth={true}
+                            variant="text"
+                        >
+                            {entityButtons}
+                        </ToggleButtonGroup>
+                    </div>
+                    {isLoading ?
+                        <Box display="flex"
+                             justifyContent="center"
+                             alignItems="center">
+                            <CircularProgress sx={{marginTop: '25px'}}/>
+                        </Box> : <div>
+                            <ParkTable
+                                entityType={entityType}
+                                park={(parks.find(p => {
+                                    return p.name === park
+                                }))}/>
+                        </div>
+                    }
 
+                </div>
             </div>
-
+            <Footer/>
         </div>
+
+
     )
 
 
