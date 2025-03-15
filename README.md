@@ -1,5 +1,4 @@
-# [WDW Live Info](https://rpsmith.me/wait_times/)
-
+# [WDW Live Info](https://rpsmith77.github.io/wait_times/)
 <!-- PROJECT SHIELDS -->
 [![Contributors][contributors-shield]][contributors-url]
 [![Stargazers][stars-shield]][stars-url]
